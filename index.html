@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <title>Stack Jump</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="game-container">
+    <canvas id="gameCanvas"></canvas>
+
+    <!-- UI Overlay -->
+    <div id="ui-layer">
+      <!-- HUD -->
+      <div id="hud" class="hidden">
+        <div class="hud-left">
+          <div class="score-box">
+            <span class="label">SCORE</span>
+            <span id="score-value">0</span>
+          </div>
+          <div class="combo-box">
+            <span id="combo-text"></span>
+            <span id="multiplier">x1</span>
+          </div>
+        </div>
+        <div class="hud-right">
+          <div class="coin-box">
+            <span class="coin-icon">●</span>
+            <span id="coin-value">0</span>
+          </div>
+          <button id="btn-pause" class="icon-btn">⏸</button>
+        </div>
+      </div>
+
+      <!-- Main Menu -->
+      <div id="menu" class="screen">
+        <div class="logo">
+          <h1>STACK JUMP</h1>
+          <div class="logo-sub">Tap • Time • Stack</div>
+        </div>
+        <div class="menu-buttons">
+          <button id="btn-play" class="btn primary">PLAY</button>
+          <button id="btn-characters" class="btn">CHARACTERS</button>
+          <button id="btn-themes" class="btn">THEMES</button>
+          <button id="btn-shop" class="btn">SHOP</button>
+          <button id="btn-achievements" class="btn">ACHIEVEMENTS</button>
+          <button id="btn-settings" class="btn">SETTINGS</button>
+          <button id="btn-credits" class="btn">CREDITS</button>
+        </div>
+        <div class="best-score">BEST: <span id="menu-best">0</span></div>
+        <div class="daily-reward" id="daily-reward">
+          <span>Daily Reward Available!</span>
+          <button id="btn-claim-daily">CLAIM</button>
+        </div>
+      </div>
+
+      <!-- Character Select -->
+      <div id="characters-screen" class="screen hidden">
+        <h2>CHARACTERS</h2>
+        <div id="character-grid" class="grid"></div>
+        <button class="btn back" data-back>BACK</button>
+      </div>
+
+      <!-- Themes -->
+      <div id="themes-screen" class="screen hidden">
+        <h2>THEMES</h2>
+        <div id="theme-grid" class="grid"></div>
+        <button class="btn back" data-back>BACK</button>
+      </div>
+
+      <!-- Shop / Coins -->
+      <div id="shop-screen" class="screen hidden">
+        <h2>SHOP</h2>
+        <div class="coins-display">Your Coins: <span id="shop-coins">0</span></div>
+        <div id="shop-items" class="grid"></div>
+        <button class="btn back" data-back>BACK</button>
+      </div>
+
+      <!-- Achievements -->
+      <div id="achievements-screen" class="screen hidden">
+        <h2>ACHIEVEMENTS</h2>
+        <div id="achievements-list"></div>
+        <button class="btn back" data-back>BACK</button>
+      </div>
+
+      <!-- Settings -->
+      <div id="settings-screen" class="screen hidden">
+        <h2>SETTINGS</h2>
+        <div class="setting-row">
+          <span>Music</span>
+          <label class="switch"><input type="checkbox" id="toggle-music" checked><span class="slider"></span></label>
+        </div>
+        <div class="setting-row">
+          <span>Sound FX</span>
+          <label class="switch"><input type="checkbox" id="toggle-sfx" checked><span class="slider"></span></label>
+        </div>
+        <div class="setting-row">
+          <span>Vibration</span>
+          <label class="switch"><input type="checkbox" id="toggle-vib" checked><span class="slider"></span></label>
+        </div>
+        <div class="setting-row">
+          <span>FPS Counter</span>
+          <label class="switch"><input type="checkbox" id="toggle-fps"><span class="slider"></span></label>
+        </div>
+        <button class="btn back" data-back>BACK</button>
+      </div>
+
+      <!-- Credits -->
+      <div id="credits-screen" class="screen hidden">
+        <h2>CREDITS</h2>
+        <p>Stack Jump<br>Built with pure HTML5 + Canvas + Web Audio</p>
+        <p>Procedural everything • 60 FPS • Mobile first</p>
+        <button class="btn back" data-back>BACK</button>
+      </div>
+
+      <!-- Pause -->
+      <div id="pause-screen" class="screen hidden">
+        <h2>PAUSED</h2>
+        <button id="btn-resume" class="btn primary">RESUME</button>
+        <button id="btn-restart" class="btn">RESTART</button>
+        <button id="btn-home" class="btn">HOME</button>
+      </div>
+
+      <!-- Game Over -->
+      <div id="gameover-screen" class="screen hidden">
+        <h2>GAME OVER</h2>
+        <div class="stats">
+          <div>Score <span id="go-score">0</span></div>
+          <div>Best <span id="go-best">0</span></div>
+          <div>Coins <span id="go-coins">0</span></div>
+          <div>Perfects <span id="go-perfects">0</span></div>
+          <div>Max Combo <span id="go-combo">0</span></div>
+          <div>Accuracy <span id="go-accuracy">0%</span></div>
+        </div>
+        <button id="btn-playagain" class="btn primary">PLAY AGAIN</button>
+        <button id="btn-gohome" class="btn">MAIN MENU</button>
+      </div>
+
+      <!-- Loading -->
+      <div id="loading" class="screen">
+        <div class="loader"></div>
+        <div>Loading Stack Jump...</div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/game.js"></script>
+</body>
+</html>
